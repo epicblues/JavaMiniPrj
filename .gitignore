@@ -1,0 +1,4 @@
+# commit하면 안되는 파일 목록
+.classpath
+.project
+/bin/
