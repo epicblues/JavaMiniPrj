@@ -1,4 +1,4 @@
-package com.mini_prj_01;
+package AddressBook.v1;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
@@ -12,7 +12,7 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.StringTokenizer;
 
-public class PhoneApp {
+public class AddressBook {
 
 	public static final String TARGET = System.getProperty("user.dir") + "\\files\\members.txt";
 
@@ -53,9 +53,11 @@ public class PhoneApp {
 
 			switch (select) {
 			case 1:
+				
 				for (int i = 0; i < list.size(); i++) {
-					System.out.printf("%d. %s\t%s\t%s%n", i + 1, list.get(i).getName(), list.get(i).getHp(),
+					System.out.printf("%d. %s\t%s\t%s%n", i+1, list.get(i).getName(), list.get(i).getHp(),
 							list.get(i).getTel());
+					
 				}
 				
 				System.out.println();
@@ -86,11 +88,12 @@ public class PhoneApp {
 				System.out.println("<4. 검색>");
 				System.out.print(">이름: ");
 				String inputName = console.readLine();
-
+				int index = 1;
 				for (int i = 0; i < list.size(); i++) {
 					if (list.get(i).getName().contains(inputName)) {
-						System.out.printf("%d. %s\t%s\t%s%n", i + 1, list.get(i).getName(), list.get(i).getHp(),
+						System.out.printf("%d. %s\t%s\t%s%n", index, list.get(i).getName(), list.get(i).getHp(),
 								list.get(i).getTel());
+						index++;
 					}
 				}
 				

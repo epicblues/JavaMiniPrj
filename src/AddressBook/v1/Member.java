@@ -1,4 +1,4 @@
-package com.mini_prj_01;
+package AddressBook.v1;
 
 public class Member {
 	private String name;
