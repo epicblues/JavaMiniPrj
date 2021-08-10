@@ -23,7 +23,7 @@ public class PhoneBook {
 		boolean on = true;
 		while (on) {
 
-			// PhonㄷBookVO 리스트를 받아서 처리한다.
+			
 			PhoneBookDAO dao = new PhoneBookDAOImpl();
 			List<PhoneBookVO> list = null;
 			Iterator<PhoneBookVO> iter = null;
