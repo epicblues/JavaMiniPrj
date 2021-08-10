@@ -23,9 +23,10 @@ public class PhoneBook {
 		boolean on = true;
 		while (on) {
 
-			// PhonBookVO 리스트를 받아서 처리한다.
+			// PhonㄷBookVO 리스트를 받아서 처리한다.
 			PhoneBookDAO dao = new PhoneBookDAOImpl();
-
+			List<PhoneBookVO> list = null;
+			Iterator<PhoneBookVO> iter = null;
 			String name = null, hp = null, tel = null;
 			
 			System.out.println("**************************************************");
@@ -36,10 +37,10 @@ public class PhoneBook {
 
 			switch (select) {
 			case 1:
-				List<PhoneBookVO> list = null;
+				
 				dao = new PhoneBookDAOImpl();
 				list = dao.getList();
-				Iterator<PhoneBookVO> iter = list.iterator();
+				iter = list.iterator();
 
 				while (iter.hasNext()) {
 					PhoneBookVO vo = iter.next();
@@ -77,16 +78,16 @@ public class PhoneBook {
 				System.out.print(">이름: ");
 				String inputName = console.readLine();
 
-				List<PhoneBookVO> searchList = dao.search(inputName);
-				if (searchList.size() == 0) {
+				list = dao.search(inputName);
+				if (list.size() == 0) {
 					System.out.println("검색된 레코드가 없습니다.");
 					break;
 				}
 
-				Iterator<PhoneBookVO> searchIter = searchList.iterator();
+				iter = list.iterator();
 
-				while (searchIter.hasNext()) {
-					PhoneBookVO searchedVO = searchIter.next();
+				while (iter.hasNext()) {
+					PhoneBookVO searchedVO = iter.next();
 					System.out.printf("%d. %s\t%s\t%s%n", searchedVO.getId(), searchedVO.getName(), searchedVO.getHp(),
 							searchedVO.getTel());
 				}
