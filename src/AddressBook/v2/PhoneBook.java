@@ -44,7 +44,9 @@ public class PhoneBook {
 
 				while (iter.hasNext()) {
 					PhoneBookVO vo = iter.next();
-					System.out.printf("%d. %s\t%s\t%s%n", vo.getId(), vo.getName(), vo.getHp(), vo.getTel());
+					hp = vo.getHp();
+					String parsedHp = hp;
+					System.out.printf("%d. %s\t%s\t%s%n", vo.getId(), vo.getName(), parsedHp, vo.getTel());
 				}
 
 				System.out.println();
@@ -100,6 +102,7 @@ public class PhoneBook {
 				System.out.println("**************************************************");
 				System.out.println("*                     감사합니다                    *");
 				System.out.println("**************************************************");
+				console.close();
 				break;
 			default:
 				System.out.println("[다시 입력해주세요]");

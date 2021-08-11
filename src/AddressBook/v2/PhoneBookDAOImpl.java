@@ -31,7 +31,9 @@ public class PhoneBookDAOImpl implements PhoneBookDAO {
 		try {
 			conn = getConnection();
 			st = conn.createStatement();
-			String query = "SELECT id,name,hp,tel FROM phone_book ORDER BY id";
+			String query = "SELECT id,RPAD(name,10,' '),substr(hp,1,length(hp)-7) || '**' || substr(hp,length(hp)-4,3) || '**',"
+					+ "substr(tel,1,length(tel)-7) || '**' || substr(tel,length(tel)-4,3) || '**' "
+					+ "FROM phone_book ORDER BY id";
 			rs = st.executeQuery(query);
 			while(rs.next()) {
 				list.add(new PhoneBookVO(rs.getLong(1), rs.getString(2), rs.getString(3), rs.getString(4)));
@@ -63,7 +65,9 @@ public class PhoneBookDAOImpl implements PhoneBookDAO {
 		
 		try {
 			conn = getConnection();
-			String sql = "SELECT * FROM phone_book WHERE name like ?";
+			String sql = "SELECT id,RPAD(name,10,' '),substr(hp,1,length(hp)-7) || '**' || substr(hp,length(hp)-4,3) || '**',"
+					+ "substr(tel,1,length(tel)-7) || '**' || substr(tel,length(tel)-4,3) || '**' "
+					+ "FROM phone_book" +" WHERE name like ?";
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, "%" + keyword + "%");
 			rs = pstmt.executeQuery();
